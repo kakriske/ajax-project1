@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -18,12 +18,16 @@
     <main class="container">
       <div data-view="country-entry">
         <h1 class="column-full">Stand In Script</h1>
-        <form class="row">
+        <form class="row" id="countryForm">
           <div class="column-half">
-            <label for="country-selection">Select</label>
-            <select name="countries"></select>
+            <label for="country-select">Choose a Country:</label>
+            <input id="country-input" name="countries" />
+            <button type="submit" id="getHolidaysButton">Get Holidays</button>
           </div>
         </form>
+      </div>
+      <div id="holiday-list-container">
+        <ul id="holiday-list"></ul>
       </div>
     </main>
     <script src="js/data.js"></script>
