@@ -1,20 +1,47 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AJAX Project</title>
-  <link rel="icon" href="images/favicon.ico">
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-  <header>
-  </header>
-  <main>
-  </main>
-  <script src="js/data.js"></script>
-  <script src="js/main.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AJAX Project</title>
+    <link rel="icon" href="images/favicon.ico" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div id="top-container">
+        <header>
+          <h1>Holiday Planner</h1>
+        </header>
+      </div>
+    </div>
+    <main class="container">
+      <div data-view="country-entry">
+        <h3 class="column-full">
+          Holiday Planner allows you to <br />
+          look at public holidays in the country <br />
+          of your choice. Select the country that <br />
+          interests you and add your plans!
+        </h3>
+        <form class="column-half" id="country-form">
+          <label for="country-select">Choose a Country:</label>
+          <input
+            id="country-input"
+            name="countries"
+            placeholder="Search for Holidays" />
+          <button type="submit" id="get-holidays-button">Submit</button>
+        </form>
+      </div>
+      <div id="holiday-list-container">
+        <ul id="holiday-list"></ul>
+      </div>
+      <div id="go-to-list">
+        <button id="list-button">Go to my list</button>
+      </div>
+    </main>
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+  </body>
 </html>
