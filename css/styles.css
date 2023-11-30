@@ -2,6 +2,123 @@ body {
   background-color: #f84c1a;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+#top-container {
+  background-color: #f19b4c;
+  padding-top: 12%;
+  padding-bottom: 12%;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  background-color: #ec4e2055;
+  margin: auto;
+  text-align: center;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  width: 90%;
+  border-radius: 10%;
+}
+
+h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #ffffffa0;
+  margin: auto;
+}
+
+h3 {
+  /* color: #ffeecc; */
+  color: white;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+}
+
+.column-half {
+  flex: 1;
+}
+
 li {
-  color: green;
+  color: #fec;
+  cursor: pointer;
+
+  /* border: 1px solid seagreen; */
+  padding-top: 8px;
+  padding-bottom: 2%;
+}
+
+li:hover {
+  background-color: #f19b4c;
+}
+
+#country-input {
+  background-color: #fec;
+  padding: 8px;
+
+  /* padding-top: 1%;
+  padding-bottom: 1%; */
+  border-radius: 2%;
+  border: none;
+  width: 200px;
+  margin-bottom: 10px;
+  outline-color: #f19b4c;
+}
+
+#get-holidays-button {
+  width: 100px;
+  height: 20px;
+}
+
+#go-to-list {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+
+#list-button {
+  height: 35px;
+}
+
+#list-button:hover {
+  cursor: pointer;
+  color: #f19b4c;
+  background-color: white;
+}
+
+button {
+  background-color: #f19b4c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+#get-holidays-button:hover {
+  background-color: white;
+  color: #f19b4c;
+  cursor: pointer;
+}
+
+::marker {
+  font-size: large;
+}
+
+label {
+  margin-bottom: 5px;
+  color: white;
 }

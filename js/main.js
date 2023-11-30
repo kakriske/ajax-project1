@@ -16,8 +16,6 @@ function getCountryCodes() {
         countryCodes[countryName] = countryCode;
       }
       console.log('Country Codes:', countryCodes);
-    } else {
-      console.log('No country codes:', xhr.status, xhr.statusText);
     }
   });
 
@@ -27,7 +25,14 @@ function getCountryCodes() {
 getCountryCodes();
 
 function capitalizeFirstLetter(input) {
-  return input.charAt(0).toUpperCase() + input.slice(1).toLowerCase();
+  const words = input.split(' ');
+  const capitalizeWords = [];
+  for (const word of words) {
+    const capitalizedWord =
+      word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+    capitalizeWords.push(capitalizedWord);
+  }
+  return capitalizeWords.join(' ');
 }
 
 function ajaxRequest() {
@@ -54,18 +59,18 @@ function ajaxRequest() {
     if (xhr.status === 200) {
       const holidays = xhr.response;
       const $holidayList = document.getElementById('holiday-list');
-      if (
-        $holidayList &&
-        $holidayList.dataset.country !== selectedCountryName
-      ) {
-        $holidayList.innerHTML = '';
-        $holidayList.dataset.country = selectedCountryName;
-      }
+
       const $newList = document.createElement('ul');
+
       for (let i = 0; i < holidays.length; i++) {
         const holiday = holidays[i];
         const $listItem = document.createElement('li');
         $listItem.textContent = holiday.name;
+
+        $listItem.addEventListener('click', function () {
+          storeSelectedCountry(selectedCountryName, holiday.name, holidays);
+          console.log('stored data:', storedDate);
+        });
         $newList.appendChild($listItem);
       }
 
@@ -73,22 +78,18 @@ function ajaxRequest() {
         '#holiday-list-container',
       );
       $holidayListContainer.appendChild($newList);
-    } else {
-      console.error('Failed to get holiday:', xhr.status, xhr.statusText);
     }
   });
   xhr.send();
 }
 
-const getHolidaysButton = document.getElementById('getHolidaysButton');
-getHolidaysButton.addEventListener('click', ajaxRequest);
+const $getHolidaysButton = document.getElementById('get-holidays-button');
+$getHolidaysButton.addEventListener('click', ajaxRequest);
 
-const $countryForm = document.getElementById('countryForm');
+const $countryForm = document.getElementById('country-form');
 
 if ($countryForm) {
   $countryForm.addEventListener('submit', function (event) {
     event.preventDefault();
   });
-} else {
-  console.log('Form element not found');
 }
