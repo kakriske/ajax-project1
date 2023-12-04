@@ -35,6 +35,10 @@ h1 {
   margin: auto;
 }
 
+h2 {
+  color: white;
+}
+
 h3 {
   /* color: #ffeecc; */
   color: white;
@@ -99,6 +103,14 @@ li:hover {
   cursor: pointer;
   color: #f19b4c;
   background-color: white;
+}
+
+#back-to-country-entry-button {
+  background-color: red;
+}
+
+#back-to-country-entry-button:hover {
+  cursor: pointer;
 }
 
 button {
