@@ -106,11 +106,14 @@ li:hover {
 }
 
 #back-to-country-entry-button {
-  background-color: red;
+  background-color: #f19b4c;
+  height: 35px;
 }
 
 #back-to-country-entry-button:hover {
   cursor: pointer;
+  background-color: white;
+  color: #f19b4c;
 }
 
 button {

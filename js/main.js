@@ -38,7 +38,7 @@ function capitalizeFirstLetter(input) {
 function ajaxRequest() {
   const $countryInput = document.getElementById('country-input');
   const selectedCountryName = capitalizeFirstLetter($countryInput.value);
-  console.log(selectedCountryName);
+  // console.log(selectedCountryName);
 
   const selectedCountryCode = countryCodes[selectedCountryName];
 
@@ -46,7 +46,7 @@ function ajaxRequest() {
     console.log('Country not found');
     return;
   }
-  console.log('selected country code:', selectedCountryCode);
+  // console.log('selected country code:', selectedCountryCode);
 
   const xhr = new XMLHttpRequest();
   xhr.open(
@@ -114,13 +114,13 @@ function updateSelectedHolidaysView() {
   $selectedHolidaysList.innerHTML = '';
 
   const selectedHolidays = data.selectedHolidays;
-
+  // console.log(selectedHolidays);
   for (const selectedHoliday of selectedHolidays) {
     const $selectedItem = document.createElement('li');
     // $selectedItem.classList.add('country-view');
     $selectedItem.textContent = `${selectedHoliday.holiday}`;
     $selectedHolidaysList.appendChild($selectedItem);
-    console.log('data object:', data);
+    // console.log('data object:', data);
   }
   viewSwap('selected-holidays');
 }
@@ -133,6 +133,7 @@ $backToCountryEntryButton.addEventListener('click', function () {
 });
 
 const $views = document.querySelectorAll('[data-view]');
+
 function viewSwap(view) {
   data.view = view;
 
