@@ -125,7 +125,9 @@ button {
 
 #get-holidays-button:hover {
   background-color: white;
-  color: #f19b4c;
+
+  /* color: #f19b4c; */
+  color: green;
   cursor: pointer;
 }
 
