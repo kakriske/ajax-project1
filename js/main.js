@@ -9,13 +9,14 @@ function getCountryCodes() {
     if (xhr.status === 200) {
       const countries = xhr.response;
 
-      // countryCodes = {};
       for (let i = 0; i < countries.length; i++) {
         const countryCode = countries[i].countryCode;
         const countryName = countries[i].name;
         countryCodes[countryName] = countryCode;
       }
       console.log('Country Codes:', countryCodes);
+      // const numberOfCountries = Object.keys(countryCodes).length;
+      // console.log(numberOfCountries);
     }
   });
 
@@ -58,7 +59,7 @@ function ajaxRequest() {
   xhr.addEventListener('load', function () {
     if (xhr.status === 200) {
       const holidays = xhr.response;
-      const $holidayList = document.getElementById('holiday-list');
+      // const $holidayList = document.getElementById('holiday-list');
 
       const $newList = document.createElement('ul');
 
@@ -68,6 +69,7 @@ function ajaxRequest() {
         $listItem.textContent = holiday.name;
 
         $listItem.addEventListener('click', function (event) {
+          console.log('list item clicked');
           event.target.classList.add('selected-item');
           storeSelectedCountry(
             selectedCountryName,
@@ -120,6 +122,13 @@ function updateSelectedHolidaysView() {
     // $selectedItem.classList.add('country-view');
     $selectedItem.textContent = `${selectedHoliday.holiday}`;
     $selectedHolidaysList.appendChild($selectedItem);
+
+    if (selectedHoliday.notes) {
+      const $notes = document.createElement('span');
+      $notes.textContent = `- Notes: ${selectedHoliday.notes}`;
+      $selectedItem.appendChild($notes);
+    }
+    $selectedHolidaysList.appendChild($selectedItem);
     // console.log('data object:', data);
   }
   viewSwap('selected-holidays');
@@ -163,4 +172,32 @@ document.addEventListener('DOMContentLoaded', function () {
   } else {
     viewSwap('country-entry');
   }
+});
+const $selectedHolidaysList = document.getElementById('selected-holidays-list');
+$selectedHolidaysList.addEventListener('click', function (event) {
+  console.log('click holiday');
+  const selectedItem = event.target;
+  const selectedIndex = Array.from($selectedHolidaysList.children).indexOf(
+    selectedItem,
+  );
+
+  if (selectedItem.index === 'LI') {
+    data.selectedHolidayIndex = selectedIndex;
+
+    viewSwap('edit-view');
+  }
+});
+
+const $saveNotesButton = document.getElementById('save-notes-button');
+$saveNotesButton.addEventListener('click', function () {
+  const $noteTextarea = document.getElementById('note-textarea');
+  const notes = $noteTextarea.value;
+
+  data.selectedHolidays[data.selectedHolidayIndex].notes = notes;
+  viewSwap('selected-holidays');
+});
+
+const $cancelEditButton = document.getElementById('cancel-edit-button');
+$cancelEditButton.addEventListener('click', function () {
+  viewSwap('selected-holidays');
 });

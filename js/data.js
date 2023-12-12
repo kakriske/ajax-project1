@@ -41,17 +41,20 @@ function storeSelectedCountry(country, holiday, allHolidays, clickListItem) {
       holiday,
       allHolidays,
       clickListItem,
+      notes: '',
     });
 
     //trying to remove the selected list from the original list
     const originalList = data.allHolidays || [];
     const updatedList = [];
+    // console.log('Original List:', originalList);
     for (let i = 0; i < originalList.length; i++) {
       console.log('checking:', originalList[i].name);
       if (originalList[i].name !== holiday) {
         updatedList.push(originalList[i]);
       }
     }
+    // console.log('updated list:', updatedList);
     data.allHolidays = updatedList;
     updateSelectedHolidaysView();
   }
